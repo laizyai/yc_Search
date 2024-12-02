@@ -607,3 +607,141 @@
     font-size: 0.6875rem;
   }
 }
+
+.messages table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 24px 0;
+  font-family: var(--font-primary);
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Handle table scroll on mobile */
+.messages table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* Table header */
+.messages thead {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #edf2f7;
+}
+
+.messages th {
+  position: sticky;
+  top: 0;
+  background-color: #f8f9fa;
+  padding: 16px 20px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #1a202c;
+  white-space: nowrap;
+}
+
+/* Table body */
+.messages td {
+  padding: 16px 20px;
+  font-size: 0.9375rem;
+  color: #4a5568;
+  border-bottom: 1px solid #edf2f7;
+  line-height: 1.5;
+}
+
+/* Name column */
+.messages td:first-child {
+  font-weight: 500;
+  color: #1a202c;
+  white-space: nowrap;
+}
+
+/* Star rating column */
+.messages td:nth-child(2) {
+  font-feature-settings: "tnum";
+  white-space: nowrap;
+  color: #eab308; /* Yellow color for stars */
+}
+
+/* YC Company column */
+.messages td:nth-child(4) {
+  font-weight: 500;
+  color: #1a202c;
+  white-space: nowrap;
+}
+
+/* Skills column - allow wrapping for long skill lists */
+.messages td:nth-child(5) {
+  white-space: normal;
+  min-width: 200px;
+}
+
+/* Summary column - allow wrapping for descriptions */
+.messages td:last-child {
+  white-space: normal;
+  min-width: 250px;
+  color: #64748b;
+}
+
+/* Row hover effect */
+.messages tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.messages tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Last row */
+.messages tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .messages th,
+  .messages td {
+    padding: 12px 16px;
+  }
+  
+  .messages th {
+    font-size: 0.8125rem;
+  }
+  
+  .messages td {
+    font-size: 0.875rem;
+  }
+  
+  /* Ensure minimum widths are respected on mobile */
+  .messages td:nth-child(5) {
+    min-width: 180px;
+  }
+  
+  .messages td:last-child {
+    min-width: 220px;
+  }
+}
+
+/* Custom scrollbar for table */
+.messages table::-webkit-scrollbar {
+  height: 8px;
+}
+
+.messages table::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.messages table::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 4px;
+}
+
+.messages table::-webkit-scrollbar-thumb:hover {
+  background: #cdcdcd;
+}
