@@ -285,14 +285,12 @@
 /* Font */
 
 /* Import Inter font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-/* Base typography */
-:root {
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-}
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 .chatContainer {
+  --font-primary: 'Montserrat', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  
   display: flex;
   flex-direction: column-reverse;
   height: 100vh;
@@ -316,6 +314,7 @@
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   gap: 12px;
   order: 1;
+  z-index: 10;
 }
 
 .input {
@@ -335,6 +334,7 @@
 .input::placeholder {
   color: #6e6e6e;
   font-weight: 400;
+  font-family: var(--font-primary);
 }
 
 .input:hover {
@@ -360,7 +360,7 @@
   border-radius: 24px;
   cursor: pointer;
   transition: all 0.2s ease;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
 }
 
 .button:hover:not(:disabled) {
@@ -417,6 +417,18 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   font-size: 1rem;
   line-height: 1.6;
+  font-family: var(--font-primary);
+}
+
+@keyframes messageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .userMessage {
@@ -424,7 +436,7 @@
   color: #fff;
   background-color: #000;
   border-bottom-right-radius: 4px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .assistantMessage {
@@ -468,15 +480,14 @@
   font-weight: 400;
 }
 
-/* Timestamps and metadata */
 .messageTime {
   font-size: 0.75rem;
   color: #6e6e6e;
   margin-top: 4px;
   font-weight: 400;
+  font-family: var(--font-primary);
 }
 
-/* Links within messages */
 .assistantMessage a {
   color: #0066cc;
   text-decoration: none;
