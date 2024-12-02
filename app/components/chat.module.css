@@ -1,296 +1,9 @@
-.chatContainer {
-  display: flex;
-  flex-direction: column-reverse;
-  height: 100%;
-  width: 100%;
-}
-
-.inputForm {
-  display: flex;
-  width: 100%;
-  padding: 10px;
-  padding-bottom: 40px;
-  order: 1;
-}
-
-.input {
-  flex-grow: 1;
-  padding: 16px 24px;
-  margin-right: 10px;
-  border-radius: 60px;
-  border: 2px solid transparent;
-  font-size: 1em;
-  background-color: #efefef;
-}
-
-.input:focus {
-  outline: none !important;
-  border-color: #000;
-  background-color: white;
-}
-
-.button {
-  padding: 8px 24px;
-  background-color: #000;
-  color: white;
-  border: none;
-  font-size: 1em;
-  border-radius: 60px; /* Removed duplicate border-radius property */
-}
-
-.button:disabled {
-  background-color: lightgrey;
-}
-
-.messages {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  order: 2;
-  white-space: pre-wrap;
-}
-
-.userMessage,
-.assistantMessage,
-.codeMessage {
-  margin: 8px 0;
-  padding: 8px 16px;
-  align-self: flex-start;
-  border-radius: 15px;
-  max-width: 80%;
-  overflow-wrap: break-word;
-}
-
-.assistantMessage img {
-  max-width: 100%;
-  margin: 8px 0px 8px 0px;
-  border-radius: 8px;
-}
-
-.userMessage {
-  align-self: flex-end;
-  color: #fff;
-  background-color: #000;
-}
-
-.assistantMessage {
-  background-color: #efefef;
-}
-
-.codeMessage {
-  padding: 10px 16px;
-  background-color: #e9e9e9;
-  font-family: monospace;
-  counter-reset: line;
-}
-
-.codeMessage > div {
-  margin-top: 4px;
-}
-
-/* start */
-.chatContainer {
-  display: flex;
-  flex-direction: column-reverse;
-  height: 100vh;
-  width: 100%;
-  background-color: #ffffff;
-  position: relative;
-}
-
-.inputForm {
-  display: flex;
-  width: 100%;
-  padding: 16px 24px;
-  position: sticky;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  gap: 12px;
-  order: 1;
-}
-
-.input {
-  flex-grow: 1;
-  padding: 16px 24px;
-  border-radius: 24px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  font-size: 1rem;
-  background-color: #f5f5f5;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.input:hover {
-  background-color: #fafafa;
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.input:focus {
-  outline: none;
-  border-color: #000;
-  background-color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.button {
-  padding: 16px 32px;
-  background-color: #000;
-  color: white;
-  border: none;
-  font-size: 1rem;
-  border-radius: 24px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-weight: 500;
-}
-
-.button:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.button:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.button:disabled {
-  background-color: #e0e0e0;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.messages {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  order: 2;
-  white-space: pre-wrap;
-  gap: 16px;
-  scroll-behavior: smooth;
-}
-
-.messages::-webkit-scrollbar {
-  width: 8px;
-}
-
-.messages::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.messages::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-}
-
-.userMessage,
-.assistantMessage,
-.codeMessage {
-  margin: 0;
-  padding: 16px 24px;
-  border-radius: 20px;
-  max-width: 80%;
-  overflow-wrap: break-word;
-  animation: messageAppear 0.3s ease-out;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-@keyframes messageAppear {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.assistantMessage img {
-  max-width: 100%;
-  margin: 12px 0;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.userMessage {
-  align-self: flex-end;
-  color: #fff;
-  background-color: #000;
-  border-bottom-right-radius: 4px;
-}
-
-.assistantMessage {
-  align-self: flex-start;
-  background-color: #f5f5f5;
-  border-bottom-left-radius: 4px;
-}
-
-.codeMessage {
-  padding: 16px 24px;
-  background-color: #1e1e1e;
-  font-family: 'JetBrains Mono', monospace;
-  counter-reset: line;
-  color: #ffffff;
-  border-radius: 12px;
-}
-
-.codeMessage > div {
-  margin-top: 8px;
-  padding: 4px 0;
-  display: flex;
-}
-
-.codeMessage span {
-  color: #6e6e6e;
-  margin-right: 16px;
-  user-select: none;
-}
-
-@media (max-width: 768px) {
-  .inputForm {
-    padding: 12px 16px;
-  }
-  
-  .input {
-    padding: 12px 16px;
-  }
-  
-  .button {
-    padding: 12px 24px;
-  }
-  
-  .messages {
-    padding: 16px;
-  }
-  
-  .userMessage,
-  .assistantMessage,
-  .codeMessage {
-    max-width: 90%;
-    padding: 12px 16px;
-  }
-}
-
-.codeMessage span {
-  color: #b8b8b8;
-  margin-right: 8px;
-}
-
-/* Font */
-
-/* Import Inter font */
 /* Import Montserrat font */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+/* Chat Container */
 .chatContainer {
   --font-primary: 'Montserrat', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  
   display: flex;
   flex-direction: column-reverse;
   height: 100vh;
@@ -303,6 +16,7 @@
   letter-spacing: -0.011em;
 }
 
+/* Input Form */
 .inputForm {
   display: flex;
   width: 100%;
@@ -349,6 +63,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Button */
 .button {
   padding: 16px 32px;
   background-color: #000;
@@ -379,6 +94,7 @@
   font-weight: 500;
 }
 
+/* Messages Container */
 .messages {
   flex-grow: 1;
   overflow-y: auto;
@@ -405,6 +121,7 @@
   border-radius: 4px;
 }
 
+/* Message Bubbles */
 .userMessage,
 .assistantMessage,
 .codeMessage {
@@ -455,6 +172,24 @@
   font-weight: 400;
 }
 
+.assistantMessage img {
+  max-width: 100%;
+  margin: 12px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.assistantMessage a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.assistantMessage a:hover {
+  text-decoration: underline;
+}
+
+/* Code Message */
 .codeMessage {
   padding: 16px 24px;
   background-color: #1e1e1e;
@@ -480,643 +215,8 @@
   font-weight: 400;
 }
 
-.messageTime {
-  font-size: 0.75rem;
-  color: #6e6e6e;
-  margin-top: 4px;
-  font-weight: 400;
-  font-family: var(--font-primary);
-}
-
-.assistantMessage a {
-  color: #0066cc;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.assistantMessage a:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  .inputForm {
-    padding: 12px 16px;
-  }
-  
-  .input {
-    padding: 12px 16px;
-    font-size: 0.9375rem;
-  }
-  
-  .button {
-    padding: 12px 24px;
-    font-size: 0.875rem;
-  }
-  
-  .messages {
-    padding: 16px;
-  }
-  
-  .userMessage,
-  .assistantMessage,
-  .codeMessage {
-    max-width: 90%;
-    padding: 12px 16px;
-    font-size: 0.9375rem;
-  }
-
-  /* Tables */
-
-/* Markdown table styles */
-.messages table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 24px 0;
-  font-family: var(--font-primary);
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-}
-
-/* Handle table scroll on mobile */
-.messages table {
-  display: block;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-/* Table header cells */
-.messages th {
-  background-color: #f8f9fa;
-  padding: 16px 24px;
-  text-align: left;
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: #1a202c;
-  border-bottom: 2px solid #edf2f7;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* Table body cells */
-.messages td {
-  padding: 16px 24px;
-  font-size: 0.9375rem;
-  color: #4a5568;
-  border-bottom: 1px solid #edf2f7;
-  line-height: 1.5;
-}
-
-/* Row hover effect */
-.messages tr:hover {
-  background-color: #f8fafc;
-}
-
-/* Last row bottom border */
-.messages tr:last-child td {
-  border-bottom: none;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .messages th,
-  .messages td {
-    padding: 12px 16px;
-  }
-  
-  .messages th {
-    font-size: 0.8125rem;
-  }
-  
-  .messages td {
-    font-size: 0.875rem;
-  }
-}
-
-/* Optional: For numeric columns */
-.messages td[align="right"],
-.messages th[align="right"] {
-  text-align: right;
-  font-feature-settings: "tnum";
-  font-variant-numeric: tabular-nums;
-}
-  
-  .messageTime {
-    font-size: 0.6875rem;
-  }
-}
-
-.messages table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 24px 0;
-  font-family: var(--font-primary);
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-}
-
-/* Handle table scroll on mobile */
-.messages table {
-  display: block;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-/* Table header */
-.messages thead {
-  background-color: #f8f9fa;
-  border-bottom: 2px solid #edf2f7;
-}
-
-.messages th {
-  position: sticky;
-  top: 0;
-  background-color: #f8f9fa;
-  padding: 16px 20px;
-  text-align: left;
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: #1a202c;
-  white-space: nowrap;
-}
-
-/* Table body */
-.messages td {
-  padding: 16px 20px;
-  font-size: 0.9375rem;
-  color: #4a5568;
-  border-bottom: 1px solid #edf2f7;
-  line-height: 1.5;
-}
-
-/* Name column */
-.messages td:first-child {
-  font-weight: 500;
-  color: #1a202c;
-  white-space: nowrap;
-}
-
-/* Star rating column */
-.messages td:nth-child(2) {
-  font-feature-settings: "tnum";
-  white-space: nowrap;
-  color: #eab308; /* Yellow color for stars */
-}
-
-/* YC Company column */
-.messages td:nth-child(4) {
-  font-weight: 500;
-  color: #1a202c;
-  white-space: nowrap;
-}
-
-/* Skills column - allow wrapping for long skill lists */
-.messages td:nth-child(5) {
-  white-space: normal;
-  min-width: 200px;
-}
-
-/* Summary column - allow wrapping for descriptions */
-.messages td:last-child {
-  white-space: normal;
-  min-width: 250px;
-  color: #64748b;
-}
-
-/* Row hover effect */
-.messages tbody tr {
-  transition: background-color 0.2s ease;
-}
-
-.messages tbody tr:hover {
-  background-color: #f8fafc;
-}
-
-/* Last row */
-.messages tbody tr:last-child td {
-  border-bottom: none;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .messages th,
-  .messages td {
-    padding: 12px 16px;
-  }
-  
-  .messages th {
-    font-size: 0.8125rem;
-  }
-  
-  .messages td {
-    font-size: 0.875rem;
-  }
-  
-  /* Ensure minimum widths are respected on mobile */
-  .messages td:nth-child(5) {
-    min-width: 180px;
-  }
-  
-  .messages td:last-child {
-    min-width: 220px;
-  }
-}
-
-/* Custom scrollbar for table */
-.messages table::-webkit-scrollbar {
-  height: 8px;
-}
-
-.messages table::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-.messages table::-webkit-scrollbar-thumb {
-  background: #ddd;
-  border-radius: 4px;
-}
-
-.messages table::-webkit-scrollbar-thumb:hover {
-  background: #cdcdcd;
-}
-
-
-.messages table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 24px 0;
-  font-family: var(--font-primary);
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
-}
-
-/* Table header */
-.messages thead {
-  background: linear-gradient(to right, #fafafa, #f8f9fa);
-}
-
-.messages th {
-  position: sticky;
-  top: 0;
-  padding: 20px;
-  text-align: left;
-  font-weight: 600;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #64748b;
-  white-space: nowrap;
-  border-right: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
-  transition: all 0.2s ease;
-  background: inherit;
-}
-
-.messages th::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background: #000;
-  transform: scaleX(0);
-  transition: transform 0.2s ease;
-}
-
-.messages th:hover {
-  color: #000;
-}
-
-.messages th:hover::after {
-  transform: scaleX(0.8);
-}
-
-.messages th:last-child {
-  border-right: none;
-}
-
-/* Table body */
-.messages td {
-  padding: 16px 20px;
-  font-size: 0.9375rem;
-  color: #4a5568;
-  border-right: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
-  line-height: 1.5;
-  background-color: #ffffff;
-}
-
-.messages td:last-child {
-  border-right: none;
-}
-
-/* Name column */
-.messages td:first-child {
-  font-weight: 500;
-  color: #1a202c;
-  white-space: nowrap;
-}
-
-/* Star rating column */
-.messages td:nth-child(2) {
-  font-feature-settings: "tnum";
-  white-space: nowrap;
-  color: #eab308;
-}
-
-/* YC Company column */
-.messages td:nth-child(4) {
-  font-weight: 500;
-  color: #1a202c;
-  white-space: nowrap;
-}
-
-/* Skills column */
-.messages td:nth-child(5) {
-  white-space: normal;
-  min-width: 200px;
-}
-
-/* Summary column */
-.messages td:last-child {
-  white-space: normal;
-  min-width: 250px;
-  color: #64748b;
-}
-
-/* Row hover effect */
-.messages tbody tr {
-  transition: background-color 0.2s ease;
-}
-
-.messages tbody tr:hover td {
-  background-color: #fafafa;
-}
-
-/* Last row */
-.messages tbody tr:last-child td {
-  border-bottom: none;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .messages th {
-    padding: 16px;
-    font-size: 0.6875rem;
-  }
-  
-  .messages td {
-    padding: 12px 16px;
-    font-size: 0.875rem;
-  }
-  
-  .messages td:nth-child(5) {
-    min-width: 180px;
-  }
-  
-  .messages td:last-child {
-    min-width: 220px;
-  }
-}
-
-/* Custom scrollbar */
-.messages table::-webkit-scrollbar {
-  height: 8px;
-}
-
-.messages table::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-.messages table::-webkit-scrollbar-thumb {
-  background: #ddd;
-  border-radius: 4px;
-}
-
-.messages table::-webkit-scrollbar-thumb:hover {
-  background: #cdcdcd;
-}
-/* Add these styles to your existing chat.module.css */
-
-/* Make selectors more specific to override any existing styles */
-.messages > table,
-.assistantMessage table,
-.userMessage table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 24px 0;
-  font-family: var(--font-primary);
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
-  display: block;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-/* Table header */
-.messages > table thead,
-.assistantMessage table thead,
-.userMessage table thead {
-  background: linear-gradient(to right, #fafafa, #f8f9fa);
-}
-
-.messages > table th,
-.assistantMessage table th,
-.userMessage table th {
-  position: sticky;
-  top: 0;
-  padding: 20px;
-  text-align: left;
-  font-weight: 600;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #64748b;
-  white-space: nowrap;
-  border-right: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
-  transition: all 0.2s ease;
-  background: inherit;
-}
-
-/* Table body */
-.messages > table td,
-.assistantMessage table td,
-.userMessage table td {
-  padding: 16px 20px;
-  font-size: 0.9375rem;
-  color: #4a5568;
-  border-right: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
-  line-height: 1.5;
-  background-color: #ffffff;
-}
-
-/* Column-specific styles */
-.messages > table td:first-child,
-.assistantMessage table td:first-child,
-.userMessage table td:first-child {
-  font-weight: 500;
-  color: #1a202c;
-  white-space: nowrap;
-}
-
-.messages > table td:nth-child(2),
-.assistantMessage table td:nth-child(2),
-.userMessage table td:nth-child(2) {
-  font-feature-settings: "tnum";
-  white-space: nowrap;
-  color: #eab308;
-}
-
-.messages > table td:nth-child(4),
-.assistantMessage table td:nth-child(4),
-.userMessage table td:nth-child(4) {
-  font-weight: 500;
-  color: #1a202c;
-  white-space: nowrap;
-}
-
-.messages > table td:nth-child(5),
-.assistantMessage table td:nth-child(5),
-.userMessage table td:nth-child(5) {
-  white-space: normal;
-  min-width: 200px;
-}
-
-.messages > table td:last-child,
-.assistantMessage table td:last-child,
-.userMessage table td:last-child {
-  white-space: normal;
-  min-width: 250px;
-  color: #64748b;
-  border-right: none;
-}
-
-/* Row hover effect */
-.messages > table tbody tr:hover td,
-.assistantMessage table tbody tr:hover td,
-.userMessage table tbody tr:hover td {
-  background-color: #fafafa;
-}
-
-/* Remove bottom border from last row */
-.messages > table tbody tr:last-child td,
-.assistantMessage table tbody tr:last-child td,
-.userMessage table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-/* Media queries for responsive design */
-@media (max-width: 768px) {
-  .messages > table th,
-  .assistantMessage table th,
-  .userMessage table th {
-    padding: 16px;
-    font-size: 0.6875rem;
-  }
-  
-  .messages > table td,
-  .assistantMessage table td,
-  .userMessage table td {
-    padding: 12px 16px;
-    font-size: 0.875rem;
-  }
-}
-
-/* Custom scrollbar */
-.messages > table::-webkit-scrollbar,
-.assistantMessage table::-webkit-scrollbar,
-.userMessage table::-webkit-scrollbar {
-  height: 8px;
-}
-
-.messages > table::-webkit-scrollbar-track,
-.assistantMessage table::-webkit-scrollbar-track,
-.userMessage table::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-.messages > table::-webkit-scrollbar-thumb,
-.assistantMessage table::-webkit-scrollbar-thumb,
-.userMessage table::-webkit-scrollbar-thumb {
-  background: #ddd;
-  border-radius: 4px;
-}
-@media (max-width: 768px) {
-  .inputForm {
-    padding: 12px 16px;
-  }
-  
-  .input {
-    padding: 12px 16px;
-    font-size: 0.9375rem;
-  }
-  
-  .button {
-    padding: 12px 24px;
-    font-size: 0.875rem;
-  }
-  
-  .messages {
-    padding: 16px;
-  }
-  
-  .userMessage,
-  .assistantMessage,
-  .codeMessage {
-    max-width: 90%;
-    padding: 12px 16px;
-    font-size: 0.9375rem;
-  }
-  
-  .messageTime {
-    font-size: 0.6875rem;
-  }
-
-  /* Mobile-specific table styles */
-  .messages th,
-  .messages td {
-    padding: 12px 16px;
-  }
-  
-  .messages th {
-    font-size: 0.8125rem;
-  }
-  
-  .messages td {
-    font-size: 0.875rem;
-  }
-  
-  /* Ensure minimum widths are respected on mobile */
-  .messages td:nth-child(5) {
-    min-width: 180px;
-  }
-  
-  .messages td:last-child {
-    min-width: 220px;
-  }
-}
-
-/* Table styles - moved outside media query */
-.messages table {
+/* Table Styles */
+.assistantMessage table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
@@ -1130,12 +230,11 @@
   display: table;
 }
 
-/* Table header */
-.messages thead {
+.assistantMessage thead {
   background: linear-gradient(to right, #fafafa, #f8f9fa);
 }
 
-.messages th {
+.assistantMessage th {
   position: sticky;
   top: 0;
   padding: 20px;
@@ -1152,8 +251,15 @@
   background: inherit;
 }
 
-/* Table body */
-.messages td {
+.assistantMessage th:hover {
+  color: #000;
+}
+
+.assistantMessage th:last-child {
+  border-right: none;
+}
+
+.assistantMessage td {
   padding: 16px 20px;
   font-size: 0.9375rem;
   color: #4a5568;
@@ -1163,68 +269,128 @@
   background-color: #ffffff;
 }
 
-/* Column-specific styles */
-.messages td:first-child {
+.assistantMessage td:last-child {
+  border-right: none;
+}
+
+.assistantMessage td:first-child {
   font-weight: 500;
   color: #1a202c;
   white-space: nowrap;
 }
 
-.messages td:nth-child(2) {
+.assistantMessage td:nth-child(2) {
   font-feature-settings: "tnum";
   white-space: nowrap;
   color: #eab308;
 }
 
-.messages td:nth-child(4) {
+.assistantMessage td:nth-child(4) {
   font-weight: 500;
   color: #1a202c;
   white-space: nowrap;
 }
 
-.messages td:nth-child(5) {
+.assistantMessage td:nth-child(5) {
   white-space: normal;
   min-width: 200px;
 }
 
-.messages td:last-child {
+.assistantMessage td:last-child {
   white-space: normal;
   min-width: 250px;
   color: #64748b;
-  border-right: none;
 }
 
-/* Hover effects */
-.messages tbody tr {
+/* Table Hover Effects */
+.assistantMessage tbody tr {
   transition: background-color 0.2s ease;
 }
 
-.messages tbody tr:hover td {
+.assistantMessage tbody tr:hover td {
   background-color: #fafafa;
 }
 
-/* Last row */
-.messages tbody tr:last-child td {
+.assistantMessage tbody tr:last-child td {
   border-bottom: none;
 }
 
-/* Custom scrollbar */
-.messages table::-webkit-scrollbar {
+/* Table Scrollbar */
+.assistantMessage table::-webkit-scrollbar {
   height: 8px;
 }
 
-.messages table::-webkit-scrollbar-track {
+.assistantMessage table::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 4px;
 }
 
-.messages table::-webkit-scrollbar-thumb {
+.assistantMessage table::-webkit-scrollbar-thumb {
   background: #ddd;
   border-radius: 4px;
 }
 
-.messages table::-webkit-scrollbar-thumb:hover {
+.assistantMessage table::-webkit-scrollbar-thumb:hover {
   background: #cdcdcd;
 }
 
+/* Message Time */
+.messageTime {
+  font-size: 0.75rem;
+  color: #6e6e6e;
+  margin-top: 4px;
+  font-weight: 400;
+  font-family: var(--font-primary);
+}
 
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .inputForm {
+    padding: 12px 16px;
+  }
+  
+  .input {
+    padding: 12px 16px;
+    font-size: 0.9375rem;
+  }
+  
+  .button {
+    padding: 12px 24px;
+    font-size: 0.875rem;
+  }
+  
+  .messages {
+    padding: 16px;
+  }
+  
+  .userMessage,
+  .assistantMessage,
+  .codeMessage {
+    max-width: 90%;
+    padding: 12px 16px;
+    font-size: 0.9375rem;
+  }
+  
+  .messageTime {
+    font-size: 0.6875rem;
+  }
+
+  /* Mobile Table Styles */
+  .assistantMessage table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .assistantMessage th,
+  .assistantMessage td {
+    padding: 12px 16px;
+  }
+  
+  .assistantMessage th {
+    font-size: 0.6875rem;
+  }
+  
+  .assistantMessage td {
+    font-size: 0.875rem;
+  }
+}
