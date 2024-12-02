@@ -71,3 +71,134 @@ pre {
   background-color: #e4e4e4;
   color: black;
 }
+
+/* Table styles - placed at root level */
+.assistantMessage table {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 24px 0;
+  font-family: var(--font-primary);
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.assistantMessage thead {
+  background: linear-gradient(to right, #fafafa, #f8f9fa);
+}
+
+.assistantMessage th {
+  position: sticky;
+  top: 0;
+  padding: 20px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  white-space: nowrap;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  background: inherit;
+}
+
+.assistantMessage td {
+  padding: 16px 20px;
+  font-size: 0.9375rem;
+  color: #4a5568;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  line-height: 1.5;
+  background-color: #ffffff;
+}
+
+/* Column-specific styles */
+.assistantMessage td:first-child {
+  font-weight: 500;
+  color: #1a202c;
+  white-space: nowrap;
+}
+
+.assistantMessage td:nth-child(2) {
+  font-feature-settings: "tnum";
+  white-space: nowrap;
+  color: #eab308;
+}
+
+.assistantMessage td:nth-child(4) {
+  font-weight: 500;
+  color: #1a202c;
+  white-space: nowrap;
+}
+
+.assistantMessage td:nth-child(5) {
+  white-space: normal;
+  min-width: 200px;
+}
+
+.assistantMessage td:last-child {
+  white-space: normal;
+  min-width: 250px;
+  color: #64748b;
+  border-right: none;
+}
+
+/* Hover effects */
+.assistantMessage tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.assistantMessage tbody tr:hover td {
+  background-color: #fafafa;
+}
+
+.assistantMessage tr:last-child td {
+  border-bottom: none;
+}
+
+/* Handle scrolling */
+.assistantMessage tbody {
+  white-space: normal;
+}
+
+/* Scrollbar styles */
+.assistantMessage table::-webkit-scrollbar {
+  height: 8px;
+}
+
+.assistantMessage table::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.assistantMessage table::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 4px;
+}
+
+.assistantMessage table::-webkit-scrollbar-thumb:hover {
+  background: #cdcdcd;
+}
+
+@media (max-width: 768px) {
+  .assistantMessage table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .assistantMessage th {
+    padding: 16px;
+    font-size: 0.6875rem;
+  }
+  
+  .assistantMessage td {
+    padding: 12px 16px;
+    font-size: 0.875rem;
+  }
+}
