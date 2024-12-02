@@ -908,3 +908,155 @@
 .messages table::-webkit-scrollbar-thumb:hover {
   background: #cdcdcd;
 }
+/* Add these styles to your existing chat.module.css */
+
+/* Make selectors more specific to override any existing styles */
+.messages > table,
+.assistantMessage table,
+.userMessage table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 24px 0;
+  font-family: var(--font-primary);
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* Table header */
+.messages > table thead,
+.assistantMessage table thead,
+.userMessage table thead {
+  background: linear-gradient(to right, #fafafa, #f8f9fa);
+}
+
+.messages > table th,
+.assistantMessage table th,
+.userMessage table th {
+  position: sticky;
+  top: 0;
+  padding: 20px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  white-space: nowrap;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  background: inherit;
+}
+
+/* Table body */
+.messages > table td,
+.assistantMessage table td,
+.userMessage table td {
+  padding: 16px 20px;
+  font-size: 0.9375rem;
+  color: #4a5568;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  line-height: 1.5;
+  background-color: #ffffff;
+}
+
+/* Column-specific styles */
+.messages > table td:first-child,
+.assistantMessage table td:first-child,
+.userMessage table td:first-child {
+  font-weight: 500;
+  color: #1a202c;
+  white-space: nowrap;
+}
+
+.messages > table td:nth-child(2),
+.assistantMessage table td:nth-child(2),
+.userMessage table td:nth-child(2) {
+  font-feature-settings: "tnum";
+  white-space: nowrap;
+  color: #eab308;
+}
+
+.messages > table td:nth-child(4),
+.assistantMessage table td:nth-child(4),
+.userMessage table td:nth-child(4) {
+  font-weight: 500;
+  color: #1a202c;
+  white-space: nowrap;
+}
+
+.messages > table td:nth-child(5),
+.assistantMessage table td:nth-child(5),
+.userMessage table td:nth-child(5) {
+  white-space: normal;
+  min-width: 200px;
+}
+
+.messages > table td:last-child,
+.assistantMessage table td:last-child,
+.userMessage table td:last-child {
+  white-space: normal;
+  min-width: 250px;
+  color: #64748b;
+  border-right: none;
+}
+
+/* Row hover effect */
+.messages > table tbody tr:hover td,
+.assistantMessage table tbody tr:hover td,
+.userMessage table tbody tr:hover td {
+  background-color: #fafafa;
+}
+
+/* Remove bottom border from last row */
+.messages > table tbody tr:last-child td,
+.assistantMessage table tbody tr:last-child td,
+.userMessage table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .messages > table th,
+  .assistantMessage table th,
+  .userMessage table th {
+    padding: 16px;
+    font-size: 0.6875rem;
+  }
+  
+  .messages > table td,
+  .assistantMessage table td,
+  .userMessage table td {
+    padding: 12px 16px;
+    font-size: 0.875rem;
+  }
+}
+
+/* Custom scrollbar */
+.messages > table::-webkit-scrollbar,
+.assistantMessage table::-webkit-scrollbar,
+.userMessage table::-webkit-scrollbar {
+  height: 8px;
+}
+
+.messages > table::-webkit-scrollbar-track,
+.assistantMessage table::-webkit-scrollbar-track,
+.userMessage table::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.messages > table::-webkit-scrollbar-thumb,
+.assistantMessage table::-webkit-scrollbar-thumb,
+.userMessage table::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 4px;
+}
