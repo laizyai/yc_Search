@@ -186,7 +186,7 @@ pre {
   background: #cdcdcd;
 }
 
-@media (max-width: 768px) {
+
   .assistantMessage table {
     display: block;
     overflow-x: auto;
@@ -201,4 +201,3 @@ pre {
     padding: 12px 16px;
     font-size: 0.875rem;
   }
-}
