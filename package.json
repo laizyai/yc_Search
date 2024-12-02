@@ -14,8 +14,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-markdown": "^9.0.1",
-    "remark-gfm": "^3.0.1" // Add this line
-
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
     "@types/node": "20.12.7",
