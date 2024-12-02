@@ -25,8 +25,7 @@
     "singleQuote": false
   },
   "resolutions": {
-  "vfile": "^5.3.6",
-  "vfile-message": "^3.0.5"
-}
-
+    "vfile": "^5.3.6",
+    "vfile-message": "^3.0.5"
+  }
 }
