@@ -524,6 +524,84 @@
     padding: 12px 16px;
     font-size: 0.9375rem;
   }
+
+  /* Tables */
+
+/* Markdown table styles */
+.messages table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 24px 0;
+  font-family: var(--font-primary);
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Handle table scroll on mobile */
+.messages table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* Table header cells */
+.messages th {
+  background-color: #f8f9fa;
+  padding: 16px 24px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #1a202c;
+  border-bottom: 2px solid #edf2f7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Table body cells */
+.messages td {
+  padding: 16px 24px;
+  font-size: 0.9375rem;
+  color: #4a5568;
+  border-bottom: 1px solid #edf2f7;
+  line-height: 1.5;
+}
+
+/* Row hover effect */
+.messages tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Last row bottom border */
+.messages tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .messages th,
+  .messages td {
+    padding: 12px 16px;
+  }
+  
+  .messages th {
+    font-size: 0.8125rem;
+  }
+  
+  .messages td {
+    font-size: 0.875rem;
+  }
+}
+
+/* Optional: For numeric columns */
+.messages td[align="right"],
+.messages th[align="right"] {
+  text-align: right;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
   
   .messageTime {
     font-size: 0.6875rem;
