@@ -225,16 +225,14 @@
 /* Table Styles */
 .assistantMessage table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 24px 0;
+  border-collapse: collapse;
+  margin: 12px 0;
   font-family: var(--font-primary);
   background: white;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   border: 1px solid #e2e8f0;
-  display: table;
 }
 
 .assistantMessage thead {
@@ -244,7 +242,7 @@
 .assistantMessage th {
   position: sticky;
   top: 0;
-  padding: 20px;
+  padding: 8px 12px;
   text-align: left;
   font-weight: 600;
   font-size: 0.75rem;
@@ -268,7 +266,7 @@
 }
 
 .assistantMessage td {
-  padding: 16px 20px;
+  padding: 8px 12px;
   font-size: 0.9375rem;
   color: #4a5568;
   border-right: 1px solid #e2e8f0;
@@ -461,4 +459,62 @@
   50% {
     opacity: 1;
   }
+}
+
+.legalTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.legalTag {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Update table cell styles for Related Legal Areas */
+.assistantMessage td {
+  white-space: normal;
+}
+
+/* Style the cell that contains the spans */
+.assistantMessage td:has(span) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 12px;
+}
+
+/* Style each span in the cell */
+.assistantMessage td>span {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Hide the literal text of the span tags */
+.assistantMessage td:has(span)::before {
+  display: none;
+}
+
+/* Remove any extra margins around paragraphs in cells */
+.assistantMessage td p {
+  margin: 0;
+}
+
+/* Remove extra space around tables */
+.assistantMessage table+p {
+  margin-top: 12px;
+}
+
+.assistantMessage p+table {
+  margin-top: 12px;
 }

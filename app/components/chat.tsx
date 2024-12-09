@@ -8,6 +8,7 @@ import Markdown from "react-markdown";
 import { AssistantStreamEvent } from "openai/resources/beta/assistants/assistants";
 import { RequiredActionFunctionToolCall } from "openai/resources/beta/threads/runs/runs";
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 type MessageProps = {
   role: "user" | "assistant" | "code";
@@ -21,7 +22,38 @@ const UserMessage = ({ text }: { text: string }) => {
 const AssistantMessage = ({ text }: { text: string }) => {
   return (
     <div className={styles.assistantMessage}>
-      <Markdown remarkPlugins={[remarkGfm]}>{text}</Markdown>
+      <Markdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          td: ({ children }) => {
+            const content = children?.toString() || '';
+
+            // Check if content contains <span> tags
+            if (content.includes('<span>')) {
+              // Extract text between span tags
+              const areas = content.match(/<span>(.*?)<\/span>/g)?.map(span =>
+                span.replace(/<\/?span>/g, '').trim()
+              ) || [];
+
+              return (
+                <td>
+                  <div className={styles.legalTags}>
+                    {areas.map((area, index) => (
+                      <span key={index} className={styles.legalTag}>
+                        {area}
+                      </span>
+                    ))}
+                  </div>
+                </td>
+              );
+            }
+
+            return <td>{children}</td>;
+          }
+        }}
+      >
+        {text}
+      </Markdown>
     </div>
   );
 };
@@ -274,6 +306,24 @@ const Chat = ({
     });
 
   }
+
+  const renderTableCell = (content: string, field: string) => {
+    if (field === "Related Legal Areas" && content) {
+      const areas = content.split(",").map(area => area.trim());
+      return (
+        <div className={styles.legalTags}>
+          {areas.map((area, index) => (
+            <span key={index} className={styles.legalTag}>
+              {area}
+            </span>
+          ))}
+        </div>
+      );
+    }
+
+    // Return regular content for other fields
+    return content;
+  };
 
   return (
     <div className={styles.chatContainer}>
