@@ -8,7 +8,7 @@
   flex-direction: column-reverse;
   height: 100vh;
   width: 100%;
-  background-color: #000000;
+  background-color: #fff;
   position: relative;
   font-family: var(--font-primary);
   -webkit-font-smoothing: antialiased;
@@ -66,7 +66,7 @@
 /* Button */
 .button {
   padding: 16px 32px;
-  background-color: #000;
+  background-color: #FF5722 !important;
   color: white;
   border: none;
   font-size: 0.9375rem;
@@ -76,22 +76,28 @@
   cursor: pointer;
   transition: all 0.2s ease;
   letter-spacing: 0.01em;
+  box-shadow: 0 2px 8px rgba(255, 87, 34, 0.2);
 }
 
 .button:hover:not(:disabled) {
+  background-color: #F4511E !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(255, 87, 34, 0.3),
+    0 0 0 2px rgba(255, 87, 34, 0.1);
 }
 
 .button:active:not(:disabled) {
-  transform: translateY(0);
+  transform: translateY(1px);
+  background-color: #E64A19 !important;
+  box-shadow: 0 2px 4px rgba(255, 87, 34, 0.2);
 }
 
 .button:disabled {
-  background-color: #e0e0e0;
+  background-color: #FFE0B2 !important;
+  opacity: 0.7;
   cursor: not-allowed;
   transform: none;
-  font-weight: 500;
+  box-shadow: none;
 }
 
 /* Messages Container */
@@ -106,7 +112,6 @@
   gap: 16px;
   scroll-behavior: smooth;
   line-height: 1.6;
-  border: 5px solid #f26522;
 }
 
 .messages::-webkit-scrollbar {
@@ -233,7 +238,7 @@
 }
 
 .assistantMessage thead {
-  background: linear-gradient(to right, #fafafa, #f8f9fa);
+  background: #FF5722;
 }
 
 .assistantMessage th {
@@ -245,16 +250,17 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #64748b;
+  color: white;
   white-space: nowrap;
-  border-right: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: none;
   transition: all 0.2s ease;
   background: inherit;
 }
 
 .assistantMessage th:hover {
-  color: #000;
+  color: rgba(255, 255, 255, 0.9);
+  background: #F4511E;
 }
 
 .assistantMessage th:last-child {
@@ -393,4 +399,66 @@
 
 .assistantMessage td {
   font-size: 0.875rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .button {
+    padding: 12px 24px;
+    font-size: 0.875rem;
+  }
+}
+
+/* Thinking indicator */
+.thinkingContainer {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+.thinkingBubble {
+  background-color: #f5f5f5;
+  padding: 12px 20px;
+  border-radius: 20px;
+  border-bottom-left-radius: 4px;
+  display: flex;
+  align-items: center;
+  font-size: 0.9375rem;
+  color: #666;
+  font-family: var(--font-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.thinkingText {
+  font-weight: 500;
+}
+
+.dot {
+  animation: dotFade 1.4s infinite;
+  opacity: 0;
+  margin-left: 2px;
+  font-weight: 700;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.dot:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+@keyframes dotFade {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }

@@ -6,6 +6,7 @@
   height: 100vh;
   background-color: white;
 }
+
 .title {
   font-size: 1.5em;
   margin-bottom: 20px;
@@ -13,15 +14,13 @@
 }
 
 .container {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  max-width: 1200px;
+  background: white;
   width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 .category {
@@ -44,4 +43,10 @@
 
 .category:hover {
   background-color: #e3e3eb;
+}
+
+@media (max-width: 768px) {
+  .container {
+    height: 100vh;
+  }
 }

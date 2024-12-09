@@ -64,6 +64,7 @@ const Chat = ({
   const [userInput, setUserInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [inputDisabled, setInputDisabled] = useState(false);
+  const [isThinking, setIsThinking] = useState(false);
   const [threadId, setThreadId] = useState("");
 
   // automatically scroll to bottom of chat
@@ -119,16 +120,19 @@ const Chat = ({
     handleReadableStream(stream);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!userInput.trim()) return;
-    sendMessage(userInput);
+
     setMessages((prevMessages) => [
       ...prevMessages,
       { role: "user", text: userInput },
     ]);
     setUserInput("");
     setInputDisabled(true);
+    setIsThinking(true);
+
+    await sendMessage(userInput);
     scrollToBottom();
   };
 
@@ -136,6 +140,7 @@ const Chat = ({
 
   // textCreated - create new assistant message
   const handleTextCreated = () => {
+    setIsThinking(false);
     appendMessage("assistant", "");
   };
 
@@ -246,7 +251,7 @@ const Chat = ({
       })
       return [...prevMessages.slice(0, -1), updatedLastMessage];
     });
-    
+
   }
 
   return (
@@ -255,6 +260,16 @@ const Chat = ({
         {messages.map((msg, index) => (
           <Message key={index} role={msg.role} text={msg.text} />
         ))}
+        {isThinking && (
+          <div className={styles.thinkingContainer}>
+            <div className={styles.thinkingBubble}>
+              <span className={styles.thinkingText}>Thinking</span>
+              <span className={styles.dot}>.</span>
+              <span className={styles.dot}>.</span>
+              <span className={styles.dot}>.</span>
+            </div>
+          </div>
+        )}
         <div ref={messagesEndRef} />
       </div>
       <form
