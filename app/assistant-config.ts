@@ -1,5 +1,3 @@
-import OpenAI from 'openai';
-
 export const assistantId = "asst_fJ4nTbCDTIfG7vk6G69jUWhY";
 
 export const assistantConfig = {
@@ -26,9 +24,5 @@ export const assistantConfig = {
 };
 
 if (!process.env.OPENAI_API_KEY) {
-  throw new Error('OPENAI_API_KEY is not defined in environment variables');
+  console.warn('Missing OPENAI_API_KEY environment variable');
 }
-
-export const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
