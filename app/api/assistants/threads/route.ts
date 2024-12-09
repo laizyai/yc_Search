@@ -1,9 +1,27 @@
-import { openai } from "@/app/openai";
+import { NextRequest } from 'next/server';
 
-export const runtime = "nodejs";
+export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
-// Create a new thread
-export async function POST() {
-  const thread = await openai.beta.threads.create();
-  return Response.json({ threadId: thread.id });
+export async function POST(req: NextRequest) {
+  try {
+    const response = await fetch("https://api.openai.com/v1/threads", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        "OpenAI-Beta": "assistants=v1",
+      },
+    });
+
+    const data = await response.json();
+    return Response.json({ threadId: data.id });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 }

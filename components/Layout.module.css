@@ -21,6 +21,8 @@
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .headerContent h1 {
@@ -29,6 +31,13 @@
     font-weight: var(--fw-bold);
     color: #1a1a1a;
     letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+}
+
+.headerSubtitle {
+    font-size: var(--fs-sm);
+    color: #666;
+    font-weight: var(--fw-medium);
 }
 
 .main {

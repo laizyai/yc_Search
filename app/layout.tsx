@@ -2,15 +2,49 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Warnings from "./components/warnings";
 import { assistantId } from "./assistant-config";
+import type { Metadata } from 'next'
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Assistants API Quickstart",
-  description: "A quickstart template using the Assistants API with OpenAI",
-  icons: {
-    icon: "/openai.svg",
+export const metadata: Metadata = {
+  title: 'CaseQuery AI – Instant Supreme Court Insights',
+  description: 'Ask questions about any supreme court case and get key holdings, dissenting opinions, and precedents',
+  openGraph: {
+    title: 'CaseQuery AI – Instant Supreme Court Insights',
+    description: 'Ask questions about any supreme court case and get key holdings, dissenting opinions, and precedents',
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'CaseQuery AI',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'CaseQuery AI',
+      },
+    ],
   },
-};
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CaseQuery AI – Instant Supreme Court Insights',
+    description: 'Ask questions about any supreme court case and get key holdings, dissenting opinions, and precedents',
+    images: ['/og-image.png'],
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  themeColor: '#FF5722',
+}
 
 export default function RootLayout({ children }) {
   return (
