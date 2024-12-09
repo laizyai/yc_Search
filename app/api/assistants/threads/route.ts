@@ -9,8 +9,8 @@ export async function POST(req: NextRequest) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        "OpenAI-Beta": "assistants=v1",
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+        "OpenAI-Beta": "assistants=v2",
       },
     });
 

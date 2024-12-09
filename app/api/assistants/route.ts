@@ -1,38 +1,62 @@
-import { openai } from "@/app/openai";
+import { NextRequest } from 'next/server';
+import { assistantConfig } from '@/app/assistant-config';
 
-export const runtime = "nodejs";
+export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
-// Create a new assistant
-export async function POST() {
-  const assistant = await openai.beta.assistants.create({
-    instructions: "You are a helpful assistant.",
-    name: "Quickstart Assistant",
-    model: "gpt-4o",
-    tools: [
-      { type: "code_interpreter" },
+export async function GET(req: NextRequest) {
+  try {
+    const response = await fetch(
+      "https://api.openai.com/v1/assistants",
       {
-        type: "function",
-        function: {
-          name: "get_weather",
-          description: "Determine weather in my location",
-          parameters: {
-            type: "object",
-            properties: {
-              location: {
-                type: "string",
-                description: "The city and state e.g. San Francisco, CA",
-              },
-              unit: {
-                type: "string",
-                enum: ["c", "f"],
-              },
-            },
-            required: ["location"],
-          },
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+          "OpenAI-Beta": "assistants=v2",
         },
-      },
-      { type: "file_search" },
-    ],
-  });
-  return Response.json({ assistantId: assistant.id });
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to get assistants: ${await response.text()}`);
+    }
+
+    const data = await response.json();
+    return Response.json(data);
+  } catch (error) {
+    return new Response(
+      JSON.stringify({ error: error.message }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
+}
+
+export async function POST(req: NextRequest) {
+  try {
+    const response = await fetch(
+      "https://api.openai.com/v1/assistants",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+          "OpenAI-Beta": "assistants=v2",
+        },
+        body: JSON.stringify(assistantConfig),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to create assistant: ${await response.text()}`);
+    }
+
+    const data = await response.json();
+    return Response.json(data);
+  } catch (error) {
+    return new Response(
+      JSON.stringify({ error: error.message }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
 }

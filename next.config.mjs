@@ -6,11 +6,14 @@ const nextConfig = {
     images: {
         domains: ['localhost'],
     },
-    metadata: {
-        metadataBase: new URL('https://your-domain.com'),
-        title: 'CaseQuery AI – Instant Supreme Court Insights',
-        description: 'Ask questions about any supreme court case and get key holdings, dissenting opinions, and precedents',
-    }
+    env: {
+        OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+        ASSISTANT_ID: process.env.ASSISTANT_ID,
+    },
 };
+
+// Debug log during build/startup
+console.log('API Key available:', !!process.env.OPENAI_API_KEY);
+console.log('Assistant ID:', process.env.ASSISTANT_ID);
 
 export default nextConfig;

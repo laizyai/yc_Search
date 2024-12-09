@@ -10,14 +10,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className={styles.layout}>
             <header className={styles.header}>
                 <div className={styles.headerContent}>
-                    <h1>CaseQuery AI</h1>
-                    <p className={styles.headerSubtitle}>Instant Supreme Court Insights</p>
+                    <h1>
+                        <span>Case</span>
+                        <strong>Query</strong>
+                    </h1>
                 </div>
             </header>
             <main className={styles.main}>{children}</main>
             <footer className={styles.footer}>
                 <div className={styles.footerContent}>
-                    <p>© 2024 CaseQuery AI</p>
+                    <p>© 2024 CaseQuery</p>
                 </div>
             </footer>
         </div>

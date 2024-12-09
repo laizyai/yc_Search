@@ -79,20 +79,41 @@ const Chat = ({
   // create a new threadID when chat component created
   useEffect(() => {
     const createThread = async () => {
-      const res = await fetch(`/api/assistants/threads`, {
-        method: "POST",
-      });
-      const data = await res.json();
-      setThreadId(data.threadId);
+      try {
+        const res = await fetch('/api/assistants/threads', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+
+        if (!res.ok) {
+          throw new Error(`Thread creation failed: ${await res.text()}`);
+        }
+
+        const data = await res.json();
+        console.log('Thread created:', data.threadId); // Debug log
+        setThreadId(data.threadId);
+      } catch (error) {
+        console.error('Failed to create thread:', error);
+      }
     };
     createThread();
   }, []);
 
   const sendMessage = async (text) => {
+    if (!threadId) {
+      console.error('No thread ID available');
+      return;
+    }
+
     const response = await fetch(
       `/api/assistants/threads/${threadId}/messages`,
       {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           content: text,
         }),
