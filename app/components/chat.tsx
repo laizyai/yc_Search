@@ -30,15 +30,19 @@ const AssistantMessage = ({ text }: { text: string }) => {
 
             // Check if content contains <span> tags
             if (content.includes('<span>')) {
-              // Extract text between span tags
-              const areas = content.match(/<span>(.*?)<\/span>/g)?.map(span =>
-                span.replace(/<\/?span>/g, '').trim()
-              ) || [];
+              // Extract text between span tags and clean up
+              const areas = content.match(/<span>(.*?)<\/span>/g)
+                ?.map(span =>
+                  span.replace(/<\/?span>/g, '')  // Remove span tags
+                    .replace(/^[,\s]+|[,\s]+$/g, '') // Remove leading/trailing commas and whitespace
+                    .trim()
+                )
+                .filter(area => area.length > 0); // Remove empty strings
 
               return (
                 <td>
                   <div className={styles.legalTags}>
-                    {areas.map((area, index) => (
+                    {areas?.map((area, index) => (
                       <span key={index} className={styles.legalTag}>
                         {area}
                       </span>
