@@ -6,26 +6,26 @@ import type { Metadata } from 'next'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'CaseQuery AI – Instant Supreme Court Insights',
+  title: 'YC Query AI – Instant Supreme Court Insights',
   description: 'Ask questions about any supreme court case and get key holdings, dissenting opinions, and precedents',
   openGraph: {
-    title: 'CaseQuery AI – Instant Supreme Court Insights',
+    title: 'YC Query AI – Instant Supreme Court Insights',
     description: 'Ask questions about any supreme court case and get key holdings, dissenting opinions, and precedents',
     type: 'website',
     locale: 'en_US',
-    siteName: 'CaseQuery AI',
+    siteName: 'YC Query AI',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'CaseQuery AI',
+        alt: 'YC Query AI',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CaseQuery AI – Instant Supreme Court Insights',
+    title: 'YC Query AI – Instant Supreme Court Insights',
     description: 'Ask questions about any supreme court case and get key holdings, dissenting opinions, and precedents',
     images: ['/og-image.png'],
   },
