@@ -484,7 +484,7 @@
 
 /* Style the cell that contains the spans */
 .assistantMessage td:has(span) {
-  display: flex;
+  display: masonary;
   flex-wrap: wrap;
   gap: 8px;
   padding: 8px 12px;
