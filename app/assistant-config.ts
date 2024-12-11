@@ -1,10 +1,10 @@
 export const assistantId = "asst_IssYCUA8cW5pBtxzT8A1OTyF";
 
 export const assistantConfig = {
-  name: "CaseQuery AI",
-  description: "Legal assistant for Supreme Court case analysis",
+  name: "YC Query",
+  description: "YC Founder Search",
   model: "gpt-4-turbo",
-  instructions: "You are a specialized legal assistant focused on Supreme Court cases. Provide detailed analysis of cases, including key holdings, dissenting opinions, and precedents. Use clear, professional language and cite specific parts of opinions when relevant.",
+  instructions: "You are a specialized  assistant focused on searching files to find answers.",
   tools: [
     {
       type: "code_interpreter"
