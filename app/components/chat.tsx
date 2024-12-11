@@ -312,7 +312,7 @@ const Chat = ({
   }
 
   const renderTableCell = (content: string, field: string) => {
-    if (field === "Related Legal Areas" && content) {
+    if (field === "Domain Areas" && content) {
       const areas = content.split(",").map(area => area.trim());
       return (
         <div className={styles.legalTags}>
