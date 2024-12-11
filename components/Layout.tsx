@@ -19,7 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <main className={styles.main}>{children}</main>
             <footer className={styles.footer}>
                 <div className={styles.footerContent}>
-                    <p>© 2024 Y Combinator Query</p>
+                    <p>Y Combinator Query</p>
                 </div>
             </footer>
         </div>
