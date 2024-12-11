@@ -1,4 +1,4 @@
-export const assistantId = "asst_fJ4nTbCDTIfG7vk6G69jUWhY";
+export const assistantId = "asst_IssYCUA8cW5pBtxzT8A1OTyF";
 
 export const assistantConfig = {
   name: "CaseQuery AI",
